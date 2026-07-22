@@ -77,7 +77,7 @@ const METRIC_CARDS: MetricCard[] = [
 /* ─── Phase 2 — Asset Convergence Variants ───────────────────── */
 function makeAssetVariant(fromX: string) {
   return {
-    hidden: { opacity: 0, x: fromX, scale: 1.04 },
+    hidden: { opacity: 0, x: fromX, scale: 1.02 },
     visible: (isSkipped: boolean) => ({
       opacity: 1,
       x: '0%',
@@ -86,10 +86,10 @@ function makeAssetVariant(fromX: string) {
         ? { duration: 0 }
         : {
           type: 'spring' as const,
-          stiffness: 80,
-          damping: 18,
-          mass: 1.2,
-          opacity: { duration: 0.6, ease: 'easeOut' },
+          stiffness: 140,
+          damping: 20,
+          mass: 0.8,
+          opacity: { duration: 0.35, ease: 'easeOut' },
         },
     }),
   }
@@ -108,9 +108,9 @@ const cloudLeftVariants = {
       ? { duration: 0 }
       : {
         type: 'spring' as const,
-        stiffness: 70,
+        stiffness: 120,
         damping: 20,
-        delay: 0.4,
+        delay: 0.1,
       },
   }),
 }
@@ -125,9 +125,9 @@ const cloudRightVariants = {
       ? { duration: 0 }
       : {
         type: 'spring' as const,
-        stiffness: 70,
+        stiffness: 120,
         damping: 20,
-        delay: 0.5,
+        delay: 0.15,
       },
   }),
 }
@@ -136,7 +136,7 @@ const cloudRightVariants = {
 /* ─── Phase 3 — Content Stagger Variants ────────────────────── */
 function makeContentVariant(delay: number) {
   return {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 16 },
     visible: (isSkipped: boolean) => ({
       opacity: 1,
       y: 0,
@@ -144,8 +144,8 @@ function makeContentVariant(delay: number) {
         ? { duration: 0 }
         : {
           type: 'spring' as const,
-          stiffness: 120,
-          damping: 20,
+          stiffness: 160,
+          damping: 22,
           delay,
         },
     }),
@@ -153,15 +153,15 @@ function makeContentVariant(delay: number) {
 }
 
 const subheadVariants = makeContentVariant(0)
-const headlineVariants = makeContentVariant(0.12)
-const descriptionVariants = makeContentVariant(0.24)
-const primaryBtnVariants = makeContentVariant(0.36)
-const secondaryBtnVariants = makeContentVariant(0.48)
+const headlineVariants = makeContentVariant(0.04)
+const descriptionVariants = makeContentVariant(0.08)
+const primaryBtnVariants = makeContentVariant(0.12)
+const secondaryBtnVariants = makeContentVariant(0.16)
 
 /* ─── Metric Card Stagger ────────────────────────────────────── */
 function makeCardVariant(index: number) {
   return {
-    hidden: { opacity: 0, y: 22, scale: 0.97 },
+    hidden: { opacity: 0, y: 16, scale: 0.98 },
     visible: (isSkipped: boolean) => ({
       opacity: 1,
       y: 0,
@@ -170,9 +170,9 @@ function makeCardVariant(index: number) {
         ? { duration: 0 }
         : {
           type: 'spring' as const,
-          stiffness: 120,
-          damping: 20,
-          delay: 0.60 + index * 0.1,
+          stiffness: 160,
+          damping: 22,
+          delay: 0.12 + index * 0.04,
         },
     }),
   }
@@ -248,8 +248,8 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
   const contentY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : 40])
 
   /* Phase activation gates */
-  const assetsActive = phase >= 2 || isSkipped
-  const contentActive = phase >= 3 || isSkipped
+  const assetsActive = phase >= 0 || isSkipped
+  const contentActive = phase >= 0 || isSkipped
 
   return (
     <section
