@@ -1,0 +1,662 @@
+/* ============================================================
+   MOONLITE BUILDERS & PROMOTERS
+   Global Stylesheet — Tailwind CSS v4 (CSS-first configuration)
+   Design System: Navy · Gold · White  |  Modern · Minimalist · Premium
+   ============================================================ */
+
+/* ─── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+/* ─── Tailwind Core ─────────────────────────────────────────── */
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS  (Tailwind v4 @theme block — replaces tailwind.config.ts)
+   All primitive values live here. NEVER use raw hex values
+   in component files; reference these variables instead.
+   ============================================================ */
+@theme {
+
+  /* ── Typography ─────────────────────────────────────── */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-sans);
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* ── Font Size Scale ────────────────────────────────── */
+  --font-size-xs: 0.75rem;
+  /* 12px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-base: 1rem;
+  /* 16px */
+  --font-size-lg: 1.125rem;
+  /* 18px */
+  --font-size-xl: 1.25rem;
+  /* 20px */
+  --font-size-2xl: 1.5rem;
+  /* 24px */
+  --font-size-3xl: 1.875rem;
+  /* 30px */
+  --font-size-4xl: 2.25rem;
+  /* 36px */
+  --font-size-5xl: 3rem;
+  /* 48px */
+  --font-size-6xl: 3.75rem;
+  /* 60px */
+  --font-size-7xl: 4.5rem;
+  /* 72px */
+  --font-size-8xl: 6rem;
+  /* 96px */
+
+  /* ── Colour Palette — Navy (Primary Structure) ──────── */
+  --color-navy-950: #050d1a;
+  /* Absolute darkest — page canvas */
+  --color-navy-900: #0c1524;
+  /* Deep dark — main bg */
+  --color-navy-800: #0f2247;
+  /* Brand navy — dominant nav/sections */
+  --color-navy-700: #1a3366;
+  /* Elevated surfaces */
+  --color-navy-600: #1e3a6d;
+  /* Navy light — hover states */
+  --color-navy-500: #264f9a;
+  /* Mid-range surfaces */
+  --color-navy-400: #3b6dbf;
+  /* Link / icon default */
+  --color-navy-300: #6b99d4;
+  /* Muted text on dark */
+  --color-navy-200: #a8c4e8;
+  /* Subtle navy tint */
+  --color-navy-100: #dce9f7;
+  /* Very light — backgrounds */
+  --color-navy-50: #f0f6fd;
+  /* Near-white with tint */
+
+  /* ── Colour Palette — Gold (CTAs · Metrics · Highlights) ── */
+  --color-gold-950: #3d2500;
+  --color-gold-900: #6b3e00;
+  --color-gold-800: #8f5500;
+  --color-gold-700: #b36a00;
+  --color-gold-600: #ca8a04;
+  /* Deep warm gold */
+  --color-gold-500: #dfb249;
+  /* Standard gold */
+  --color-gold-400: #e8be5b;
+  /* Brand gold — CTAs, highlights */
+  --color-gold-300: #f0ce7c;
+  /* Lighter highlight gold */
+  --color-gold-200: #f5e0a8;
+  /* Soft gold tint */
+  --color-gold-100: #faf0d5;
+  /* Nearly white gold */
+  --color-gold-50: #fdfaf0;
+
+  /* ── Colour Palette — Neutral (Background Canvas) ───── */
+  --color-canvas: #ffffff;
+  --color-canvas-off: #f8f9fc;
+  --color-surface-light: #f1f4f9;
+  --color-surface-muted: #e4eaf4;
+
+  /* ── Semantic Colour Aliases ─────────────────────────── */
+  /* Brand shortcuts used in components */
+  --color-brand-blue: var(--color-navy-800);
+  --color-brand-blue-light: var(--color-navy-600);
+  --color-brand-yellow: var(--color-gold-400);
+  --color-brand-yellow-hover: var(--color-gold-500);
+  --color-brand-dark: var(--color-navy-900);
+
+  /* Glassmorphism overlay token */
+  --color-glass-bg: rgba(15, 34, 71, 0.45);
+  --color-glass-border: rgba(255, 255, 255, 0.10);
+
+  /* ── Spacing / Sizing Scale (extends Tailwind defaults) ── */
+  --spacing-4xs: 0.125rem;
+  /* 2px  */
+  --spacing-3xs: 0.25rem;
+  /* 4px  */
+  --spacing-2xs: 0.5rem;
+  /* 8px  */
+  --spacing-xs: 0.75rem;
+  /* 12px */
+  --spacing-sm: 1rem;
+  /* 16px */
+  --spacing-md: 1.5rem;
+  /* 24px */
+  --spacing-lg: 2rem;
+  /* 32px */
+  --spacing-xl: 3rem;
+  /* 48px */
+  --spacing-2xl: 4rem;
+  /* 64px */
+  --spacing-3xl: 6rem;
+  /* 96px */
+  --spacing-4xl: 8rem;
+  /* 128px */
+
+  /* ── Border Radius ───────────────────────────────────── */
+  --radius-xs: 0.25rem;
+  /* 4px */
+  --radius-sm: 0.5rem;
+  /* 8px */
+  --radius-md: 0.75rem;
+  /* 12px */
+  --radius-lg: 1rem;
+  /* 16px */
+  --radius-xl: 1.5rem;
+  /* 24px */
+  --radius-2xl: 2rem;
+  /* 32px */
+  --radius-full: 9999px;
+
+  /* ── Shadows ─────────────────────────────────────────── */
+  --shadow-glow-gold: 0 0 32px -4px rgba(232, 190, 91, 0.45);
+  --shadow-glow-navy: 0 0 32px -4px rgba(15, 34, 71, 0.65);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.40);
+  --shadow-elevated: 0 16px 48px rgba(0, 0, 0, 0.35);
+
+  /* ── Z-Index Layer System ────────────────────────────── */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-overlay: 20;
+  --z-drawer: 40;
+  --z-nav: 50;
+  --z-modal: 60;
+  --z-toast: 70;
+  --z-tooltip: 80;
+
+  /* ── Transition Easings ──────────────────────────────── */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-decel: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-accel: cubic-bezier(0.4, 0.0, 1, 1);
+
+  /* ── Animation Definitions ───────────────────────────── */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+  --animate-pulse-gold: pulse-gold 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-fade-in-up: fade-in-up 0.6s var(--ease-decel) both;
+  --animate-slide-down: slide-down 0.35s var(--ease-decel) both;
+  --animate-slide-up: slide-up 0.3s var(--ease-accel) both;
+  --animate-scale-in: scale-in 0.4s var(--ease-spring) both;
+
+  /* Keyframes */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes float-slow {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+      transform: translateY(-8px) rotate(0.5deg);
+    }
+
+    66% {
+      transform: translateY(-4px) rotate(-0.5deg);
+    }
+  }
+
+  @keyframes pulse-gold {
+
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(232, 190, 91, 0);
+    }
+
+    50% {
+      box-shadow: 0 0 0 8px rgba(232, 190, 91, 0.18);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes draw-line {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
+}
+
+/* ============================================================
+   GLOBAL RESETS & BASE LAYER
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Smooth anchor scrolling across all browsers */
+  scroll-behavior: smooth;
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Improve font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.625;
+  background-color: var(--color-navy-900);
+  color: #f8fafc;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* Improve text rendering */
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Global selection colours */
+::selection {
+  background-color: var(--color-gold-400);
+  color: var(--color-navy-800);
+}
+
+::-moz-selection {
+  background-color: var(--color-gold-400);
+  color: var(--color-navy-800);
+}
+
+/* Focus ring — visible only for keyboard nav, hidden for mouse */
+:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Remove list decoration for semantic lists */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR  (Webkit + Firefox)
+   ============================================================ */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-navy-700) var(--color-navy-950);
+}
+
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy-950);
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-navy-950);
+  transition: background 0.2s var(--ease-smooth);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-400);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-navy-950);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   Composed semantic utilities that can be applied in JSX.
+   Component-specific styles should NOT live here.
+   ============================================================ */
+
+/* ── Glassmorphism ─────────────────────────────────────────── */
+.glass-panel {
+  background: rgba(89, 123, 191, 0.45);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.32);
+}
+
+.glass-panel:hover {
+  border-color: rgba(232, 190, 91, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(232, 190, 91, 0.08);
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
+}
+
+/* Lighter glass for navbar */
+.glass-nav {
+  background: rgba(86, 108, 146, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.40);
+}
+
+/* ── Gradient Text ─────────────────────────────────────────── */
+.gradient-text-gold {
+  background: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-400) 50%, var(--color-gold-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-navy {
+  background: linear-gradient(135deg, var(--color-navy-400) 0%, var(--color-navy-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Shimmer Effect (loading states / decorative) ─────────── */
+.shimmer {
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(232, 190, 91, 0.12) 40%,
+      rgba(232, 190, 91, 0.22) 50%,
+      rgba(232, 190, 91, 0.12) 60%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* ── Gold Glow Aura ────────────────────────────────────────── */
+.glow-gold {
+  box-shadow: var(--shadow-glow-gold);
+}
+
+/* ── Section baseline ──────────────────────────────────────── */
+.section-container {
+  width: 100%;
+  max-width: 80rem;
+  /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ── Smooth Transition Helper ──────────────────────────────── */
+.transition-base {
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.transition-fast {
+  transition: all 0.15s var(--ease-smooth);
+}
+
+.transition-slow {
+  transition: all 0.5s var(--ease-smooth);
+}
+
+/* ── Button Base ───────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--color-gold-400);
+  color: var(--color-navy-800);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease-smooth), transform 0.2s var(--ease-spring), box-shadow 0.25s var(--ease-smooth);
+  white-space: nowrap;
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold-300);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -6px rgba(232, 190, 91, 0.50);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  border: 2px solid rgba(232, 190, 91, 0.55);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-smooth);
+  white-space: nowrap;
+}
+
+.btn-outline-gold:hover {
+  color: var(--color-gold-400);
+  border-color: rgba(232, 190, 91, 0.85);
+  background-color: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+/* ── Typography Utilities ──────────────────────────────────── */
+.heading-xl {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.heading-lg {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.875rem, 3vw + 0.75rem, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.heading-md {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw + 0.5rem, 1.875rem);
+  line-height: 1.25;
+}
+
+.label-caps {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold-400);
+}
+
+/* ── Divider Accent ────────────────────────────────────────── */
+.divider-gold {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-400), transparent);
+  border: none;
+  margin: 0 auto;
+}
+
+/* ── Accessibility: Screen-reader only ────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================================
+   RESPONSIVE TYPOGRAPHY OVERRIDES
+   Ensures strict heading scaling on mobile and tablet 
+   ============================================================ */
+@media (max-width: 767px) {
+  h1 { 
+    font-size: 1.875rem !important; /* text-3xl */
+    line-height: 2.25rem !important; 
+  }
+  h2 { 
+    font-size: 1.5rem !important; /* text-2xl */
+    line-height: 2rem !important; 
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  h1 { 
+    font-size: 3rem !important; /* text-5xl */
+    line-height: 1 !important; 
+  }
+  h2 { 
+    font-size: 1.875rem !important; /* text-3xl */
+    line-height: 2.25rem !important; 
+  }
+}
+
+/* ============================================================
+   TOUCH INTERACTIONS & PERFORMANCE
+   Eliminate iOS/Android lag on interactive elements
+   ============================================================ */
+button, a, input[type="range"], select, .touch-manipulation {
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
