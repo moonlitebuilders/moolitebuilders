@@ -40,8 +40,8 @@ const METRIC_CARDS: MetricCard[] = [
     id: 'years',
     stat: '10+',
     label: 'Years Of Experience',
-    iconSrc: '/assets/hero/10+ years badge-icon.svg',
-    iconAlt: 'Premium shield badge representing 10+ years of experience',
+    iconSrc: '/assets/hero/10-years-badge-icon.svg',
+    iconAlt: '',
     iconWidth: 69,
     iconHeight: 94,
   },
@@ -50,16 +50,16 @@ const METRIC_CARDS: MetricCard[] = [
     stat: '30+',
     label: 'Projects Completed',
     iconSrc: '/assets/hero/projects-icon.svg',
-    iconAlt: 'Architectural crane icon representing 30+ completed projects',
+    iconAlt: '',
     iconWidth: 100,
     iconHeight: 91,
   },
   {
     id: 'solar',
-    stat: '1kw – 10kw',
+    stat: '1kW – 10kW',
     label: 'For All Purpose',
-    iconSrc: '/assets/hero/solar badge-icon.svg',
-    iconAlt: 'Rooftop solar panel with sun icon representing 1kw to 10kw systems',
+    iconSrc: '/assets/hero/solar-badge-icon.svg',
+    iconAlt: '',
     iconWidth: 89,
     iconHeight: 80,
   },
@@ -67,8 +67,8 @@ const METRIC_CARDS: MetricCard[] = [
     id: 'amc',
     stat: '1 Year',
     label: 'Free AMC',
-    iconSrc: '/assets/hero/amc badge-icon.svg',
-    iconAlt: 'Certified ribbon badge with checkmark representing 1 year free AMC',
+    iconSrc: '/assets/hero/amc-badge-icon.svg',
+    iconAlt: '',
     iconWidth: 78,
     iconHeight: 80,
   },
@@ -209,17 +209,17 @@ const HeroMetricCard: React.FC<MetricCardProps> = ({
         aria-hidden="true"
       />
       <div
-        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300"
+        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300 overflow-hidden shrink-0"
         aria-hidden="true"
       >
         <img
           src={card.iconSrc}
-          alt={card.iconAlt}
+          alt=""
           width={card.iconWidth}
           height={card.iconHeight}
-          loading="lazy"
+          loading="eager"
           decoding="async"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain pointer-events-none select-none"
         />
       </div>
       <p
@@ -320,7 +320,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
               animate="visible"
             >
               <img
-                src="/assets/hero/construction building -left.svg"
+                src="/assets/hero/construction-building-left.svg"
                 alt="Construction building structure — Moonlite Builders"
                 width={820}
                 height={680}
