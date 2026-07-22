@@ -21,11 +21,11 @@ import { Solar } from './pages/Solar'
 
 /* ─── Intro Phase Constants ───────────────────────────────── */
 const PHASE_TIMINGS = [
-  { phase: 1, delay: 0 },   // Navigation
-  { phase: 2, delay: 50 },  // Headline & Assets
-  { phase: 3, delay: 100 }, // Description
-  { phase: 4, delay: 150 }, // CTAs
-  { phase: 5, delay: 200 }, // Trust cards
+  { phase: 1, delay: 0 },    // Navigation
+  { phase: 2, delay: 50 },   // Side illustrations drift in from left/right
+  { phase: 3, delay: 250 },  // Headline & Description fade up
+  { phase: 4, delay: 400 },  // CTAs
+  { phase: 5, delay: 500 },  // Metric cards
 ] as const
 
 /* ─── Scroll To Hash Utility ────────────────────────────── */
@@ -54,7 +54,7 @@ const ScrollToHash = () => {
 
 function App() {
   const [isSkipped, setIsSkipped] = useState(false)
-  const [phase, setPhase]         = useState(5)
+  const [phase, setPhase]         = useState(0)
   const timersRef                 = useRef<ReturnType<typeof setTimeout>[]>([])
 
   useEffect(() => {
