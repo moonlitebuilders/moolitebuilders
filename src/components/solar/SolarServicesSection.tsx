@@ -27,7 +27,7 @@ const services = [
 
 export const SolarServicesSection: React.FC = () => {
   return (
-    <section className="w-full py-16 bg-white">
+    <section id="services" className="w-full py-16 bg-white">
       <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Heading */}
         <motion.h2 

@@ -109,7 +109,7 @@ export const SolarSubsidySection: React.FC = () => {
             className="w-full h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-xl"
           >
             <img 
-              src="/assets/service/subsity section image.png" 
+              src="/assets/service/subsidy-section-image.png" 
               alt="House with solar panels on roof" 
               className="w-full h-full object-cover"
               loading="lazy"
