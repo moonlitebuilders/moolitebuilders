@@ -77,8 +77,8 @@ export const Services: React.FC = () => {
             </div>
 
             {/* Content Typography */}
-            <h3 className="text-[#0f2247] font-heading font-bold text-xl sm:text-2xl md:text-3xl capitalize mb-2 min-h-[auto] md:min-h-[36px]">
-              construction
+            <h3 className="text-[#0f2247] font-heading font-bold text-xl sm:text-2xl md:text-3xl capitalize mb-2 min-h-0 md:min-h-[36px]">
+              Construction
             </h3>
             <p className="text-slate-700 font-medium text-xs sm:text-sm md:text-base leading-relaxed mb-4 min-h-[auto] md:min-h-[72px]">
               Building residential, commercial and industrial spaces with quality craftsmanship and thoughtful planning.
@@ -135,10 +135,10 @@ export const Services: React.FC = () => {
             </div>
 
             {/* Content Typography */}
-            <h3 className="text-[#0f2247] font-heading font-bold text-xl sm:text-2xl md:text-3xl capitalize mb-2 min-h-[auto] md:min-h-[36px]">
+            <h3 className="text-[#0f2247] font-heading font-bold text-xl sm:text-2xl md:text-3xl capitalize mb-2 min-h-0 md:min-h-[36px]">
               Solar Solutions
             </h3>
-            <p className="text-slate-700 font-medium text-xs sm:text-sm md:text-base leading-relaxed mb-4 min-h-[auto] md:min-h-[72px]">
+            <p className="text-slate-700 font-medium text-xs sm:text-sm md:text-base leading-relaxed mb-4 min-h-0 md:min-h-[72px]">
               Premium rooftop solar systems engineered for maximum energy savings and dependable long-term performance.
             </p>
 

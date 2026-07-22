@@ -223,13 +223,13 @@ const HeroMetricCard: React.FC<MetricCardProps> = ({
         />
       </div>
       <p
-        className="font-heading font-black text-lg md:text-xl leading-none"
+        className="font-heading font-black text-sm sm:text-base md:text-xl leading-snug tracking-tight whitespace-normal sm:whitespace-nowrap"
         style={{ color: 'var(--color-gold-400)' }}
         aria-hidden="true"
       >
         {card.stat}
       </p>
-      <p className="mt-1.5 text-slate-300 text-[10px] md:text-xs leading-snug font-medium">
+      <p className="mt-1 text-slate-300 text-[11px] sm:text-xs leading-tight font-medium">
         {card.label}
       </p>
     </motion.article>

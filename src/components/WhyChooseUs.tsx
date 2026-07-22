@@ -68,16 +68,16 @@ export const WhyChooseUs: React.FC = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5 sm:gap-6 mb-12 sm:mb-16">
           {features.map((feature, index) => (
             <div 
               key={index}
               className="bg-white rounded-xl p-5 border border-gray-200 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1"
             >
-              <h3 className="text-[#0f2247] font-heading font-bold text-sm md:text-[15px] leading-tight mb-4 min-h-[36px] flex items-center justify-center">
+              <h3 className="text-[#0f2247] font-heading font-bold text-base sm:text-sm md:text-[15px] leading-tight mb-3 sm:mb-4 min-h-0 sm:min-h-[40px] flex items-center justify-center">
                 {feature.title}
               </h3>
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-4 flex items-center justify-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-3 sm:mb-4 flex items-center justify-center shrink-0">
                 <img 
                   src={feature.icon} 
                   alt={feature.title} 
@@ -85,7 +85,7 @@ export const WhyChooseUs: React.FC = () => {
                   loading="lazy"
                 />
               </div>
-              <p className="text-slate-600 text-xs md:text-[13px] leading-relaxed">
+              <p className="text-slate-600 text-xs sm:text-xs md:text-[13px] leading-relaxed">
                 {feature.description}
               </p>
             </div>
