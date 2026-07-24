@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Variants } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 
 /* ── Types ─────────────────────────────────────────────── */
 
@@ -196,17 +197,36 @@ export const Contact: React.FC = () => {
 
       setIsSubmitting(true)
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      try {
+        const templateParams = {
+          from_name: form.fullName,
+          from_email: form.email || 'Not Provided',
+          contact_number: form.contactNumber,
+          service: form.service,
+          project_location: form.projectLocation,
+          message: form.projectDetails || 'No details provided.',
+        }
 
-      setIsSubmitting(false)
-      setIsSuccess(true)
-      setForm(INITIAL_FORM)
+        await emailjs.send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          templateParams,
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
 
-      // Reset success after 5 seconds
-      setTimeout(() => setIsSuccess(false), 5000)
+        setIsSuccess(true)
+        setForm(INITIAL_FORM)
+
+        // Reset success after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000)
+      } catch (error) {
+        console.error('EmailJS Error:', error)
+        alert('Something went wrong while sending your message. Please try again later or contact us directly.')
+      } finally {
+        setIsSubmitting(false)
+      }
     },
-    [validate]
+    [validate, form]
   )
 
   /* ── Shared input classes ──────────────────────────────── */
