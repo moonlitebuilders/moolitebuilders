@@ -199,16 +199,39 @@ export const Contact: React.FC = () => {
 
       try {
         const templateParams = {
+          // Name variations
           full_name: form.fullName,
           from_name: form.fullName,
+          name: form.fullName,
+          fullname: form.fullName,
+          client_name: form.fullName,
+
+          // Contact number variations
+          contact_number: form.contactNumber,
+          phone: form.contactNumber,
+          phone_number: form.contactNumber,
+          mobile: form.contactNumber,
+
+          // Email variations
           reply_to: form.email || 'Not Provided',
           from_email: form.email || 'Not Provided',
-          contact_number: form.contactNumber,
+          email: form.email || 'Not Provided',
+          email_address: form.email || 'Not Provided',
+
+          // Service variations
           services: form.service,
           service: form.service,
+          service_requested: form.service,
+
+          // Location variations
           project_location: form.projectLocation,
+          location: form.projectLocation,
+
+          // Details / Description variations
           project_details: form.projectDetails || 'No details provided.',
+          project_description: form.projectDetails || 'No details provided.',
           message: form.projectDetails || 'No details provided.',
+          details: form.projectDetails || 'No details provided.',
         }
 
         await emailjs.send(
