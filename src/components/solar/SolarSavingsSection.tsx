@@ -282,41 +282,41 @@ export const SolarSavingsSection: React.FC = () => {
                     Estimated Results
                   </h3>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     
-                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
-                      <p className="text-xs md:text-sm text-slate-500 font-medium mb-1.5">System Size</p>
+                    <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between min-w-0">
+                      <p className="text-xs sm:text-sm text-slate-500 font-medium mb-1.5 truncate">System Size</p>
                       <motion.p 
                         key={displayResults.systemSize}
                         initial={{ opacity: 0, y: -4 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-xl md:text-2xl font-bold text-slate-900"
+                        className="text-lg sm:text-xl lg:text-base xl:text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap"
                       >
                         {displayResults.systemSize}
                       </motion.p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
-                      <p className="text-xs md:text-sm text-slate-500 font-medium mb-1.5">Monthly Savings</p>
-                      <p className="text-xl md:text-2xl font-bold text-slate-900">
+                    <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between min-w-0">
+                      <p className="text-xs sm:text-sm text-slate-500 font-medium mb-1.5 truncate">Monthly Savings</p>
+                      <p className="text-lg sm:text-xl lg:text-base xl:text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap">
                         <AnimatedNumber value={displayResults.monthlySavings} prefix="₹" />
                       </p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
-                      <p className="text-xs md:text-sm text-slate-500 font-medium mb-1.5">Annual Savings</p>
-                      <p className="text-xl md:text-2xl font-bold text-slate-900">
+                    <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between min-w-0">
+                      <p className="text-xs sm:text-sm text-slate-500 font-medium mb-1.5 truncate">Annual Savings</p>
+                      <p className="text-lg sm:text-xl lg:text-base xl:text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap">
                         <AnimatedNumber value={displayResults.annualSavings} prefix="₹" />
                       </p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
-                      <p className="text-xs md:text-sm text-slate-500 font-medium mb-1.5">Payback Period</p>
+                    <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between min-w-0">
+                      <p className="text-xs sm:text-sm text-slate-500 font-medium mb-1.5 truncate">Payback Period</p>
                       <motion.p 
                         key={displayResults.paybackPeriod}
                         initial={{ opacity: 0, y: -4 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-xl md:text-2xl font-bold text-slate-900"
+                        className="text-lg sm:text-xl lg:text-base xl:text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap"
                       >
                         {displayResults.paybackPeriod}
                       </motion.p>
