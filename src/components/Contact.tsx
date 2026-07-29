@@ -199,11 +199,15 @@ export const Contact: React.FC = () => {
 
       try {
         const templateParams = {
+          full_name: form.fullName,
           from_name: form.fullName,
+          reply_to: form.email || 'Not Provided',
           from_email: form.email || 'Not Provided',
           contact_number: form.contactNumber,
+          services: form.service,
           service: form.service,
           project_location: form.projectLocation,
+          project_details: form.projectDetails || 'No details provided.',
           message: form.projectDetails || 'No details provided.',
         }
 
