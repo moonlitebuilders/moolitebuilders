@@ -43,8 +43,9 @@
     <meta name="apple-mobile-web-app-title" content="Moonlite Builders" />
 
     <!-- ─── Favicon & App Icons ───────────────────────── -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- ─── Performance: DNS Prefetch & Preconnect ────── -->
@@ -56,11 +57,16 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "Organization"],
       "name": "Moonlite Builders & Promoters",
       "description": "Premium residential and commercial construction, MNRE-approved rooftop solar installation and government subsidy assistance across Tamil Nadu since 2016.",
-      "url": "https://moonlitebuilders.com",
-      "logo": "https://moonlitebuilders.com/favicon.svg",
+      "url": "https://moonlitebuilders.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://moonlitebuilders.com/favicon.svg",
+        "width": "512",
+        "height": "512"
+      },
       "image": "https://moonlitebuilders.com/assets/og-cover.jpg",
       "telephone": "+91-XXXXXXXXXX",
       "address": {
