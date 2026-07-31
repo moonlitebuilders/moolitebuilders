@@ -262,7 +262,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       {/* ── LAYER 0 — Sky Background (absolute, no layout impact) ── */}
       <motion.div
         style={{ y: skyY }}
-        className="absolute inset-0 z-0 will-change-transform bg-[url('/assets/hero/background-sky.svg')] bg-cover bg-center"
+        className="absolute inset-0 z-0 will-change-transform bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center"
         aria-hidden="true"
       >
         <video
@@ -277,7 +277,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
           <source src="/assets/hero/sky-video.webm" type="video/webm" />
           {/* Fallback image if video completely fails inside tag */}
           <img
-            src="/assets/hero/background-sky.svg"
+            src="/assets/hero/background-sky.webp"
             alt=""
             className="w-full h-full object-cover opacity-75"
             style={{ objectPosition: 'center bottom' }}
@@ -320,12 +320,12 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
               animate="visible"
             >
               <img
-                src="/assets/hero/construction-building-left.svg"
+                src="/assets/hero/construction-building-left.webp"
                 alt="Construction building structure — Moonlite Builders"
                 width={820}
                 height={680}
                 fetchPriority="high"
-                decoding="auto"
+                decoding="async"
                 className="w-full h-auto object-contain object-bottom"
                 style={{ filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.40))' }}
               />
@@ -351,12 +351,12 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
               animate="visible"
             >
               <img
-                src="/assets/hero/solar-right.svg"
+                src="/assets/hero/solar-right.webp"
                 alt="Rooftop solar panel array — Moonlite Builders Solar Solutions"
                 width={760}
                 height={620}
                 fetchPriority="high"
-                decoding="auto"
+                decoding="async"
                 className="w-full h-auto object-contain object-bottom"
                 style={{ filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.35))' }}
               />
@@ -379,7 +379,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
               className="absolute top-[6%] left-0 z-[15] w-[45%] md:w-[36%] pointer-events-none select-none"
             >
               <motion.img
-                src="/assets/hero/clouds-left.svg"
+                src="/assets/hero/clouds-left.webp"
                 alt=""
                 width={640}
                 height={320}
@@ -401,7 +401,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
               className="absolute top-[4%] right-0 z-[15] w-[42%] md:w-[34%] pointer-events-none select-none"
             >
               <motion.img
-                src="/assets/hero/clouds-right.svg"
+                src="/assets/hero/clouds-right.webp"
                 alt=""
                 width={640}
                 height={320}

@@ -22,10 +22,10 @@ import { Solar } from './pages/Solar'
 /* ─── Intro Phase Constants ───────────────────────────────── */
 const PHASE_TIMINGS = [
   { phase: 1, delay: 0 },    // Navigation
-  { phase: 2, delay: 50 },   // Side illustrations drift in from left/right
-  { phase: 3, delay: 250 },  // Headline & Description fade up
-  { phase: 4, delay: 400 },  // CTAs
-  { phase: 5, delay: 500 },  // Metric cards
+  { phase: 2, delay: 0 },    // Side illustrations drift in from left/right
+  { phase: 3, delay: 0 },    // Headline & Description fade up
+  { phase: 4, delay: 0 },    // CTAs
+  { phase: 5, delay: 0 },    // Metric cards
 ] as const
 
 /* ─── Scroll To Hash Utility ────────────────────────────── */
