@@ -243,7 +243,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
 
   /* Parallax scroll transforms */
   const { scrollY } = useScroll()
-  const skyY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : 80])
+  const skyY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : -40])
   const assetsY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : 60])
   const contentY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : 40])
 
@@ -262,7 +262,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       {/* ── LAYER 0 — Sky Background (absolute, no layout impact) ── */}
       <motion.div
         style={{ y: skyY }}
-        className="absolute inset-0 z-0 will-change-transform bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center"
+        className="absolute -top-20 -bottom-20 -left-4 -right-4 z-0 will-change-transform bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center"
         aria-hidden="true"
       >
         <video
