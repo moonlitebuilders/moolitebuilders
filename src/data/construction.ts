@@ -150,7 +150,7 @@ export const comparisonCategories: ComparisonCategory[] = [
         icon: "/assets/icons/service/construction/Compare Package/Exterior Paint.svg",
         standard: "Apex",
         classic: "Apex",
-        premium: "Apex Ultima Emulsion / Castor"
+        premium: "Apex Ultima Emulsion"
       },
       {
         material: "Wall Tiles",
@@ -223,7 +223,7 @@ export const comparisonCategories: ComparisonCategory[] = [
         material: "Sanitary Fittings",
         icon: "/assets/icons/service/construction/Compare Package/Sanitary Fittings.svg",
         standard: "Parryware (Basic Model)",
-        classic: "Parryware / Cera",
+        classic: "Parryware / ESSCO",
         premium: "Jaquar / Parryware"
       },
       {
