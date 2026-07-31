@@ -259,36 +259,24 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       className="relative min-h-[95vh] lg:min-h-screen w-full overflow-hidden flex flex-col"
       style={{ backgroundColor: 'var(--color-navy-900)' }}
     >
-      {/* ── LAYER 0 — Sky Background (absolute, no layout impact) ── */}
+      {/* ── LAYER 0 — Sky Background (absolute, full-coverage) ── */}
       <motion.div
         style={{ y: skyY }}
-        className="absolute -top-20 -bottom-20 -left-4 -right-4 z-0 will-change-transform bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center"
+        className="absolute -top-24 -bottom-24 -left-4 -right-4 z-0 will-change-transform"
         aria-hidden="true"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-75"
-          style={{ objectPosition: 'center bottom' }}
-        >
-          <source src="/assets/hero/sky-video.mp4" type="video/mp4" />
-          <source src="/assets/hero/sky-video.webm" type="video/webm" />
-          {/* Fallback image if video completely fails inside tag */}
-          <img
-            src="/assets/hero/background-sky.webp"
-            alt=""
-            className="w-full h-full object-cover opacity-75"
-            style={{ objectPosition: 'center bottom' }}
-          />
-        </video>
-        {/* Readability veil — darkens edges, keeps centre bright */}
+        <img
+          src="/assets/hero/background-sky.webp"
+          alt=""
+          className="w-full h-full object-cover pointer-events-none select-none"
+          style={{ objectPosition: 'center center' }}
+        />
+        {/* Readability veil — subtle gradient overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(12,21,36,0.20) 0%, rgba(15,34,71,0.10) 45%, rgba(12,21,36,0.82) 100%)',
+              'linear-gradient(180deg, rgba(12,21,36,0.15) 0%, rgba(15,34,71,0.05) 45%, rgba(12,21,36,0.75) 100%)',
           }}
         />
       </motion.div>
