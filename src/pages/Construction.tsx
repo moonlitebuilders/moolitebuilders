@@ -23,9 +23,18 @@ export const Construction: React.FC = () => {
       meta.content = 'Premium residential, commercial and industrial construction services by Moonlite Builders. Transparent pricing, quality materials and expert supervision.'
       document.head.appendChild(meta)
     }
-    
+
+    // Set Canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) {
+      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/construction')
+    }
+
     return () => {
       document.title = "Moonlite Builders & Promoters"
+      if (canonical) {
+        canonical.setAttribute('href', 'https://moonlitebuilders.com/')
+      }
     }
   }, [])
 

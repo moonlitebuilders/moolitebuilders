@@ -23,9 +23,18 @@ export const Solar: React.FC = () => {
       meta.content = 'Clean Energy. Smarter Savings. Power your home or business with professionally designed rooftop solar systems.'
       document.head.appendChild(meta)
     }
-    
+
+    // Set Canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) {
+      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/solar')
+    }
+
     return () => {
       document.title = "Moonlite Builders & Promoters"
+      if (canonical) {
+        canonical.setAttribute('href', 'https://moonlitebuilders.com/')
+      }
     }
   }, [])
 
