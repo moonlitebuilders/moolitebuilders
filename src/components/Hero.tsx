@@ -255,7 +255,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       ref={containerRef}
       id="hero"
       aria-label="Moonlite Builders — Construction and Solar Services Hero"
-      className="relative w-full min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-slate-950"
+      className="relative w-full min-h-[100dvh] flex flex-col justify-between overflow-hidden"
     >
       {/* ── LAYER 0 — Sky Background Parallax (absolute, exact full-coverage) ── */}
       <motion.div
@@ -270,9 +270,12 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         />
       </motion.div>
 
-      {/* ── LAYER 1 — Single Uniform Backdrop Overlay (absolute, exact full-coverage) ── */}
+      {/* ── LAYER 1 — Premium Blue Gradient Overlay (absolute, exact full-coverage) ── */}
       <div
-        className="absolute inset-0 z-[1] bg-black/30 pointer-events-none"
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(8, 20, 45, 0.70) 0%, rgba(10, 26, 55, 0.58) 45%, rgba(12, 30, 65, 0.68) 100%)'
+        }}
         aria-hidden="true"
       />
 
