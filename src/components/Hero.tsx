@@ -268,8 +268,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         <img
           src="/assets/hero/background-sky.webp"
           alt=""
-          className="w-full h-full object-cover pointer-events-none select-none"
-          style={{ objectPosition: 'center center' }}
+          className="w-full h-full object-cover pointer-events-none select-none object-[center_20%] md:object-center"
         />
         {/* Readability veil — subtle gradient overlay */}
         <div
@@ -294,7 +293,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       {/* ── LAYER 10 — Construction SVG left (absolute, no layout impact) ── */}
       <motion.div
         style={{ y: assetsY }}
-        className="absolute bottom-[10%] left-0 z-[10] will-change-transform pointer-events-none select-none
+        className="absolute bottom-[35%] sm:bottom-[25%] md:bottom-[10%] left-0 z-[10] will-change-transform pointer-events-none select-none
                    w-[75%] sm:w-[60%] md:w-[55%] lg:w-[48%] xl:w-[45%]"
         aria-hidden="true"
       >
@@ -325,7 +324,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       {/* ── LAYER 10 — Solar SVG right (absolute, no layout impact) ── */}
       <motion.div
         style={{ y: assetsY }}
-        className="absolute bottom-[10%] right-0 z-[10] will-change-transform pointer-events-none select-none
+        className="absolute bottom-[35%] sm:bottom-[25%] md:bottom-[10%] right-0 z-[10] will-change-transform pointer-events-none select-none
                    w-[70%] sm:w-[55%] md:w-[50%] lg:w-[45%] xl:w-[42%]"
         aria-hidden="true"
       >
