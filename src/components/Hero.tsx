@@ -255,7 +255,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       ref={containerRef}
       id="hero"
       aria-label="Moonlite Builders — Construction and Solar Services Hero"
-      className="relative w-full overflow-hidden flex flex-col justify-between min-h-screen min-h-[100dvh] bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center bg-no-repeat"
+      className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center bg-no-repeat overflow-hidden"
     >
       {/* ── LAYER 0 — Sky Background Parallax (absolute, full-coverage) ── */}
       <motion.div
@@ -268,12 +268,13 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
           alt=""
           className="w-full h-full object-cover object-center pointer-events-none select-none"
         />
-        {/* Subtle backdrop tint overlay for typography legibility */}
-        <div
-          className="absolute inset-0 bg-black/20 pointer-events-none"
-          aria-hidden="true"
-        />
       </motion.div>
+
+      {/* ── LAYER 1 — Single Uniform Backdrop Gradient for Legibility ── */}
+      <div
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-slate-950/70 via-slate-900/50 to-slate-950/80 pointer-events-none"
+        aria-hidden="true"
+      />
 
       {/* ── LAYER 10 — Construction SVG left (absolute, no layout impact) ── */}
       <motion.div
@@ -388,15 +389,11 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         )}
       </AnimatePresence>
 
-      {/* ── LAYER 30 — All foreground content ── */}
-      {/* Navbar spacer — keeps text below the fixed nav bar */}
-      <div className="h-20 md:h-24 shrink-0" aria-hidden="true" />
-
-      {/* Central text column — full viewport width, completely independent of decorative assets */}
+      {/* ── LAYER 30 — Central Content Container ── */}
       <motion.div
         style={{ y: contentY }}
-        className="relative z-[30] flex-1 flex flex-col items-center justify-center
-                   w-full min-w-0 px-5 md:px-10 py-4 md:py-8 will-change-transform"
+        className="relative z-[30] flex-1 flex flex-col items-center justify-center text-center
+                   w-full min-w-0 px-4 py-12 md:py-20 will-change-transform"
       >
         {/* Establishment label chip */}
         <motion.div
@@ -504,24 +501,22 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         </div>
       </motion.div>
 
-      {/* ── Feature Cards — pinned cleanly inside sky background ── */}
+      {/* ── Feature Cards Grid — Mobile (1-col), Tablet (2-col), Desktop (4-col) ── */}
       <div
-        className="relative z-[30] w-full max-w-6xl mx-auto px-5 md:px-8 pb-6 md:pb-8 mt-6 md:mt-8 shrink-0"
+        className="relative z-[30] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         role="list"
         aria-label="Key achievements and credentials"
       >
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-          {METRIC_CARDS.map((card, index) => (
-            <div key={card.id} role="listitem">
-              <HeroMetricCard
-                card={card}
-                isActive={contentActive}
-                isSkipped={isSkipped}
-                index={index}
-              />
-            </div>
-          ))}
-        </div>
+        {METRIC_CARDS.map((card, index) => (
+          <div key={card.id} role="listitem">
+            <HeroMetricCard
+              card={card}
+              isActive={contentActive}
+              isSkipped={isSkipped}
+              index={index}
+            />
+          </div>
+        ))}
       </div>
 
       {/* ── Scroll hint ── */}
