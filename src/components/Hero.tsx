@@ -256,13 +256,20 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       ref={containerRef}
       id="hero"
       aria-label="Moonlite Builders — Construction and Solar Services Hero"
-      className="relative min-h-[95vh] lg:min-h-screen w-full overflow-hidden flex flex-col"
-      style={{ backgroundColor: 'var(--color-navy-900)' }}
+      className="relative min-h-[95vh] lg:min-h-screen w-full overflow-hidden flex flex-col bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center md:bg-[var(--color-navy-900)] md:bg-none"
     >
+      {/* ── Mobile Readability veil ── */}
+      <div
+        className="absolute inset-0 z-[1] md:hidden pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(12,21,36,0.15) 0%, rgba(15,34,71,0.05) 45%, rgba(12,21,36,0.75) 100%)',
+        }}
+      />
       {/* ── LAYER 0 — Sky Background (absolute, full-coverage) ── */}
       <motion.div
         style={{ y: skyY }}
-        className="absolute -top-24 -bottom-[1000px] md:-bottom-24 -left-4 -right-4 z-0 will-change-transform"
+        className="hidden md:block absolute -top-24 -bottom-24 -left-4 -right-4 z-0 will-change-transform"
         aria-hidden="true"
       >
         <img
