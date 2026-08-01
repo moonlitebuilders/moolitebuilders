@@ -256,28 +256,24 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       ref={containerRef}
       id="hero"
       aria-label="Moonlite Builders — Construction and Solar Services Hero"
-      className="relative min-h-[95vh] lg:min-h-screen w-full overflow-hidden flex flex-col"
+      className="relative min-h-screen min-h-[100dvh] w-full overflow-hidden flex flex-col"
       style={{ backgroundColor: 'var(--color-navy-900)' }}
     >
       {/* ── LAYER 0 — Sky Background (absolute, full-coverage) ── */}
       <motion.div
         style={{ y: skyY }}
-        className="absolute -top-24 -bottom-24 -left-4 -right-4 z-0 will-change-transform"
+        className="absolute -top-24 -bottom-24 -left-4 -right-4 z-0 will-change-transform bg-[url('/assets/hero/background-sky.webp')] bg-cover bg-center bg-no-repeat"
         aria-hidden="true"
       >
         <img
           src="/assets/hero/background-sky.webp"
           alt=""
-          className="w-full h-full object-cover pointer-events-none select-none"
-          style={{ objectPosition: 'center center' }}
+          className="w-full h-full object-cover object-center pointer-events-none select-none"
         />
-        {/* Readability veil — subtle gradient overlay */}
+        {/* Subtle, uniform backdrop tint overlay for typography legibility */}
         <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(12,21,36,0.15) 0%, rgba(15,34,71,0.05) 45%, rgba(12,21,36,0.75) 100%)',
-          }}
+          className="absolute inset-0 bg-black/20 pointer-events-none"
+          aria-hidden="true"
         />
       </motion.div>
 
@@ -287,14 +283,14 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 55%, rgba(15,34,71,0.12) 0%, transparent 68%)',
+            'radial-gradient(ellipse at 50% 55%, rgba(15,34,71,0.10) 0%, transparent 68%)',
         }}
       />
 
       {/* ── LAYER 10 — Construction SVG left (absolute, no layout impact) ── */}
       <motion.div
         style={{ y: assetsY }}
-        className="absolute bottom-[10%] left-0 z-[10] will-change-transform pointer-events-none select-none
+        className="absolute bottom-0 left-0 z-[10] will-change-transform pointer-events-none select-none
                    w-[75%] sm:w-[60%] md:w-[55%] lg:w-[48%] xl:w-[45%]"
         aria-hidden="true"
       >
@@ -325,7 +321,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       {/* ── LAYER 10 — Solar SVG right (absolute, no layout impact) ── */}
       <motion.div
         style={{ y: assetsY }}
-        className="absolute bottom-[10%] right-0 z-[10] will-change-transform pointer-events-none select-none
+        className="absolute bottom-0 right-0 z-[10] will-change-transform pointer-events-none select-none
                    w-[70%] sm:w-[55%] md:w-[50%] lg:w-[45%] xl:w-[42%]"
         aria-hidden="true"
       >
@@ -404,26 +400,6 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         )}
       </AnimatePresence>
 
-      {/* ── LAYER 20 — Horizon gradient (absolute) ── */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 right-0 z-[20] pointer-events-none h-64 md:h-80"
-        style={{
-          background:
-            'linear-gradient(to top, var(--color-navy-900) 0%, rgba(12,21,36,0.85) 40%, transparent 100%)',
-        }}
-      />
-
-      {/* ── LAYER 25 — Readability overlay (absolute) — improves typography contrast ── */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-[25] pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(15,34,71,0.40) 0%, rgba(12,21,36,0.30) 50%, rgba(12,21,36,0.35) 100%)',
-        }}
-      />
-
       {/* ── LAYER 30 — All foreground content (normal flow, full-width) ── */}
       {/* Navbar spacer — keeps text below the fixed nav bar */}
       <div className="h-20 md:h-24 shrink-0" aria-hidden="true" />
@@ -432,7 +408,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       <motion.div
         style={{ y: contentY }}
         className="relative z-[30] flex-1 flex flex-col items-center justify-center
-                   w-full min-w-0 px-5 md:px-10 py-4 md:py-6 will-change-transform"
+                   w-full min-w-0 px-5 md:px-10 py-12 md:py-20 lg:py-24 will-change-transform"
       >
         {/* Establishment label chip */}
         <motion.div
@@ -543,7 +519,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       {/* ── Metric Cards — pinned to bottom inside normal flow ── */}
       <div
         className="relative z-[30] w-full max-w-6xl mx-auto px-5 md:px-8
-                   pb-6 md:pb-8 mt-10 md:mt-16 shrink-0"
+                   pb-6 md:pb-8 shrink-0"
         role="list"
         aria-label="Key achievements and credentials"
       >

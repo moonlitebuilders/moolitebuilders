@@ -361,7 +361,7 @@ const CtaPhoneButton: React.FC = () => (
     whileHover={{ scale: 1.04, y: -1 }}
     whileTap={{ scale: 0.97 }}
     className={[
-      '!hidden md:!inline-flex items-center gap-2',
+      '!hidden lg:!inline-flex items-center gap-2',
       'btn-gold text-xs px-5 py-2.5',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-gold-300] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
     ].join(' ')}
@@ -528,7 +528,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
   /* ── Close drawer on viewport resize to desktop ── */
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setIsDrawerOpen(false)
+      if (window.innerWidth >= 1024) setIsDrawerOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -577,10 +577,10 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
             <Logo />
           </Link>
 
-          {/* ── Desktop Links (md+) ───────────────────── */}
+          {/* ── Desktop Links (lg+) ───────────────────── */}
           <div
             role="list"
-            className="hidden md:flex items-center gap-5 lg:gap-7"
+            className="hidden lg:flex items-center gap-5 xl:gap-7"
             aria-label="Site sections"
           >
             {NAV_LINKS.map((link) => (
@@ -597,10 +597,10 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
           {/* ── Right Actions ─────────────────────────── */}
           <div className="flex items-center gap-4">
 
-            {/* CTA — hidden on mobile, visible from lg */}
+            {/* CTA — hidden on mobile & tablet, visible from lg */}
             <CtaPhoneButton />
 
-            {/* ── Hamburger (mobile only < md) ───────── */}
+            {/* ── Hamburger (mobile & tablet < lg) ───────── */}
             <button
               ref={menuButtonRef}
               id="mobile-menu-button"
@@ -610,7 +610,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
               aria-controls="mobile-drawer"
               aria-label={isDrawerOpen ? 'Close navigation menu' : 'Open navigation menu'}
               className={[
-                'md:hidden flex items-center justify-center',
+                'lg:hidden flex items-center justify-center',
                 'w-12 h-12 rounded-xl',
                 'border border-white/10 bg-white/5',
                 'text-white hover:text-[--color-gold-400] hover:border-[--color-gold-400]/30',
