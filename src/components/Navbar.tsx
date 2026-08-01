@@ -485,16 +485,17 @@ const MobileLink: React.FC<MobileLinkProps> = ({ link, isActive, index, onClick 
 
 export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const { scrolled, hidden } = useScrollState(40, 80)
+  const { hidden } = useScrollState(40, 80)
   const activeSection = useActiveSection(NAV_LINKS.map((l) => l.sectionId))
   const prefersReducedMotion = useReducedMotion()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const drawerRef = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
   
+  const isHomePage = pathname === '/' || pathname.endsWith('index.html') || pathname === ''
   // If we are not on the home page, the background might be white (e.g. construction page).
   // Applying glass-nav ensures the white text remains legible.
-  const forceSolidNav = pathname !== '/'
+  const forceSolidNav = !isHomePage
 
   const isVisible = phase >= 1 || isSkipped || pathname !== '/'
   const isHidden = hidden && !isDrawerOpen
@@ -545,7 +546,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
 
   return (
     <>
-      {/* ── Sticky Wrapper ─────────────────────────────── */}
+      {/* ── Header Wrapper ─────────────────────────────── */}
       <motion.header
         role="banner"
         custom={{ isSkipped, isHidden, isVisible }}
@@ -553,13 +554,14 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
         initial="initial"
         animate="animate"
         className={[
-          'fixed top-0 left-0 right-0 z-[50]',
-          /* Smooth transition for background and shadow */
-          'transition-[background-color,padding,box-shadow] duration-300',
-          /* When scrolled or forced solid: frosted glass + compressed padding + subtle shadow */
-          (scrolled || forceSolidNav)
+          isHomePage ? 'absolute' : 'fixed',
+          'top-0 left-0 right-0 z-[50]',
+          /* Smooth transition for padding */
+          'transition-[padding] duration-300',
+          /* On Home page: always transparent and absolute to seamlessly merge with Hero. On inner pages: fixed and solid. */
+          forceSolidNav
             ? 'bg-slate-900/80 backdrop-blur-md py-2 border-b border-white/10 shadow-lg'
-            : 'bg-transparent py-2 md:py-3',
+            : 'bg-transparent py-4 md:py-6',
         ].join(' ')}
       >
         {/* Inner container — max-width + horizontal padding */}
