@@ -555,7 +555,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
         initial="initial"
         animate="animate"
         className={[
-          isHomePage ? 'absolute top-0 left-0 right-0 z-[50]' : 'fixed top-0 left-0 right-0 z-[50]',
+          'fixed top-0 left-0 right-0 z-[50]',
           /* Smooth transition for background and shadow */
           'transition-[background-color,padding,box-shadow] duration-300',
           /* When scrolled on other pages or forced solid: frosted glass + compressed padding + subtle shadow */
