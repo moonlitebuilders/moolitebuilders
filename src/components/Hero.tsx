@@ -272,7 +272,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
 
       {/* ── LAYER 1 — Single Uniform Backdrop Gradient for Legibility ── */}
       <div
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-slate-950/70 via-slate-900/50 to-slate-950/80 pointer-events-none"
+        className="absolute inset-0 z-[1] bg-black/30 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -501,9 +501,9 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         </div>
       </motion.div>
 
-      {/* ── Feature Cards Grid — Mobile (1-col), Tablet (2-col), Desktop (4-col) ── */}
+      {/* ── Feature Cards Grid — Mobile (2-col), Tablet (2-col), Desktop (4-col) ── */}
       <div
-        className="relative z-[30] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+        className="relative z-[30] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-4 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
         role="list"
         aria-label="Key achievements and credentials"
       >
