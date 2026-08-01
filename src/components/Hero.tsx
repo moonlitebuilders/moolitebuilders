@@ -255,22 +255,22 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       ref={containerRef}
       id="hero"
       aria-label="Moonlite Builders — Construction and Solar Services Hero"
-      className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between bg-[#0B1120] overflow-hidden"
+      className="relative w-full min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-slate-950"
     >
-      {/* ── LAYER 0 — Sky Background Parallax (absolute, full-coverage) ── */}
+      {/* ── LAYER 0 — Sky Background Parallax (absolute, exact full-coverage) ── */}
       <motion.div
-        style={{ y: skyY }}
-        className="absolute -top-32 -bottom-32 -left-4 -right-4 z-0 will-change-transform"
+        style={{ y: skyY, scale: 1.15 }}
+        className="absolute inset-0 z-0 will-change-transform origin-center pointer-events-none"
         aria-hidden="true"
       >
         <img
           src="/assets/hero/background-sky.webp"
           alt=""
-          className="w-full h-full object-cover object-center pointer-events-none select-none"
+          className="w-full h-full object-cover object-center select-none"
         />
       </motion.div>
 
-      {/* ── LAYER 1 — Single Uniform Backdrop Gradient for Legibility ── */}
+      {/* ── LAYER 1 — Single Uniform Backdrop Overlay (absolute, exact full-coverage) ── */}
       <div
         className="absolute inset-0 z-[1] bg-black/30 pointer-events-none"
         aria-hidden="true"
