@@ -361,7 +361,7 @@ const CtaPhoneButton: React.FC = () => (
     whileHover={{ scale: 1.04, y: -1 }}
     whileTap={{ scale: 0.97 }}
     className={[
-      '!hidden lg:!inline-flex items-center gap-2',
+      '!hidden md:!inline-flex items-center gap-2',
       'btn-gold text-xs px-5 py-2.5',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-gold-300] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
     ].join(' ')}
@@ -485,17 +485,16 @@ const MobileLink: React.FC<MobileLinkProps> = ({ link, isActive, index, onClick 
 
 export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const { hidden } = useScrollState(40, 80)
+  const { scrolled, hidden } = useScrollState(40, 80)
   const activeSection = useActiveSection(NAV_LINKS.map((l) => l.sectionId))
   const prefersReducedMotion = useReducedMotion()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const drawerRef = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
   
-  const isHomePage = pathname === '/' || pathname.endsWith('index.html') || pathname === ''
   // If we are not on the home page, the background might be white (e.g. construction page).
   // Applying glass-nav ensures the white text remains legible.
-  const forceSolidNav = !isHomePage
+  const forceSolidNav = pathname !== '/'
 
   const isVisible = phase >= 1 || isSkipped || pathname !== '/'
   const isHidden = hidden && !isDrawerOpen
@@ -529,7 +528,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
   /* ── Close drawer on viewport resize to desktop ── */
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 1024) setIsDrawerOpen(false)
+      if (window.innerWidth >= 768) setIsDrawerOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -546,7 +545,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
 
   return (
     <>
-      {/* ── Header Wrapper ─────────────────────────────── */}
+      {/* ── Sticky Wrapper ─────────────────────────────── */}
       <motion.header
         role="banner"
         custom={{ isSkipped, isHidden, isVisible }}
@@ -554,14 +553,13 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
         initial="initial"
         animate="animate"
         className={[
-          isHomePage ? 'absolute' : 'fixed',
-          'top-0 left-0 right-0 z-[50]',
-          /* Smooth transition for padding */
-          'transition-[padding] duration-300',
-          /* On Home page: always transparent and absolute to seamlessly merge with Hero. On inner pages: fixed and solid. */
-          forceSolidNav
+          'fixed top-0 left-0 right-0 z-[50]',
+          /* Smooth transition for background and shadow */
+          'transition-[background-color,padding,box-shadow] duration-300',
+          /* When scrolled or forced solid: frosted glass + compressed padding + subtle shadow */
+          (scrolled || forceSolidNav)
             ? 'bg-slate-900/80 backdrop-blur-md py-2 border-b border-white/10 shadow-lg'
-            : 'bg-transparent py-4 md:py-6',
+            : 'bg-transparent py-2 md:py-3',
         ].join(' ')}
       >
         {/* Inner container — max-width + horizontal padding */}
@@ -579,10 +577,10 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
             <Logo />
           </Link>
 
-          {/* ── Desktop Links (lg+) ───────────────────── */}
+          {/* ── Desktop Links (md+) ───────────────────── */}
           <div
             role="list"
-            className="hidden lg:flex items-center gap-5 xl:gap-7"
+            className="hidden md:flex items-center gap-5 lg:gap-7"
             aria-label="Site sections"
           >
             {NAV_LINKS.map((link) => (
@@ -599,10 +597,10 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
           {/* ── Right Actions ─────────────────────────── */}
           <div className="flex items-center gap-4">
 
-            {/* CTA — hidden on mobile & tablet, visible from lg */}
+            {/* CTA — hidden on mobile, visible from lg */}
             <CtaPhoneButton />
 
-            {/* ── Hamburger (mobile & tablet < lg) ───────── */}
+            {/* ── Hamburger (mobile only < md) ───────── */}
             <button
               ref={menuButtonRef}
               id="mobile-menu-button"
@@ -612,7 +610,7 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
               aria-controls="mobile-drawer"
               aria-label={isDrawerOpen ? 'Close navigation menu' : 'Open navigation menu'}
               className={[
-                'lg:hidden flex items-center justify-center',
+                'md:hidden flex items-center justify-center',
                 'w-12 h-12 rounded-xl',
                 'border border-white/10 bg-white/5',
                 'text-white hover:text-[--color-gold-400] hover:border-[--color-gold-400]/30',
