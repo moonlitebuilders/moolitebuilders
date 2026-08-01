@@ -558,8 +558,8 @@ export const Navbar: React.FC<NavbarProps> = ({ phase, isSkipped }) => {
           'fixed top-0 left-0 right-0 z-[50]',
           /* Smooth transition for background and shadow */
           'transition-[background-color,padding,box-shadow] duration-300',
-          /* When scrolled on other pages or forced solid: frosted glass + compressed padding + subtle shadow */
-          (scrolled && !isHomePage || forceSolidNav)
+          /* When scrolled or forced solid: frosted glass + compressed padding + subtle shadow */
+          (scrolled || forceSolidNav)
             ? 'bg-slate-900/80 backdrop-blur-md py-2 border-b border-white/10 shadow-lg'
             : 'bg-transparent py-2 md:py-3',
         ].join(' ')}
