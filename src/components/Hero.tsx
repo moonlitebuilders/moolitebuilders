@@ -74,65 +74,6 @@ const METRIC_CARDS: MetricCard[] = [
   },
 ]
 
-/* ─── Phase 2 — Asset Convergence Variants ───────────────────── */
-function makeAssetVariant(fromX: string) {
-  return {
-    hidden: { opacity: 0, x: fromX, scale: 1.02 },
-    visible: (isSkipped: boolean) => ({
-      opacity: 1,
-      x: '0%',
-      scale: 1,
-      transition: isSkipped
-        ? { duration: 0 }
-        : {
-          type: 'spring' as const,
-          stiffness: 75,
-          damping: 16,
-          mass: 1.0,
-          opacity: { duration: 0.5, ease: 'easeOut' },
-        },
-    }),
-  }
-}
-
-const constructionVariants = makeAssetVariant('-120%')
-const solarVariants = makeAssetVariant('120%')
-
-const cloudLeftVariants = {
-  hidden: { opacity: 0, x: '-60%', y: -10 },
-  visible: (isSkipped: boolean) => ({
-    opacity: 0.60,
-    x: '0%',
-    y: 0,
-    transition: isSkipped
-      ? { duration: 0 }
-      : {
-        type: 'spring' as const,
-        stiffness: 90,
-        damping: 18,
-        delay: 0.1,
-      },
-  }),
-}
-
-const cloudRightVariants = {
-  hidden: { opacity: 0, x: '60%', y: -10 },
-  visible: (isSkipped: boolean) => ({
-    opacity: 0.55,
-    x: '0%',
-    y: 0,
-    transition: isSkipped
-      ? { duration: 0 }
-      : {
-        type: 'spring' as const,
-        stiffness: 90,
-        damping: 18,
-        delay: 0.15,
-      },
-  }),
-}
-
-
 /* ─── Phase 3 — Content Stagger Variants ────────────────────── */
 function makeContentVariant(delay: number) {
   return {
@@ -244,11 +185,9 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
   /* Parallax scroll transforms */
   const { scrollY } = useScroll()
   const skyY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : -40])
-  const assetsY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : 60])
   const contentY = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : 40])
 
   /* Phase activation gates */
-  const assetsActive = phase >= 2 || isSkipped
   const contentActive = phase >= 3 || isSkipped
 
   return (
@@ -256,8 +195,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
       ref={containerRef}
       id="hero"
       aria-label="Moonlite Builders — Construction and Solar Services Hero"
-      className="relative min-h-screen min-h-[100dvh] w-full overflow-hidden flex flex-col"
-      style={{ backgroundColor: 'var(--color-navy-900)' }}
+      className="relative w-full bg-cover bg-center bg-no-repeat overflow-hidden min-h-screen min-h-[100dvh] flex flex-col justify-between py-12 md:py-20 lg:py-24"
     >
       {/* ── LAYER 0 — Sky Background (absolute, full-coverage) ── */}
       <motion.div
@@ -270,145 +208,18 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
           alt=""
           className="w-full h-full object-cover object-center pointer-events-none select-none"
         />
-        {/* Subtle, uniform backdrop tint overlay for typography legibility */}
+        {/* Subtle backdrop tint overlay for typography legibility */}
         <div
           className="absolute inset-0 bg-black/20 pointer-events-none"
           aria-hidden="true"
         />
       </motion.div>
 
-      {/* ── LAYER 5 — Centre radial overlay (absolute) ── */}
-      <div
-        className="absolute inset-0 z-[5] pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 55%, rgba(15,34,71,0.10) 0%, transparent 68%)',
-        }}
-      />
-
-      {/* ── LAYER 10 — Construction SVG left (absolute, no layout impact) ── */}
-      <motion.div
-        style={{ y: assetsY }}
-        className="absolute bottom-0 left-0 z-[10] will-change-transform pointer-events-none select-none
-                   w-[75%] sm:w-[60%] md:w-[55%] lg:w-[48%] xl:w-[45%]"
-        aria-hidden="true"
-      >
-        <AnimatePresence>
-          {assetsActive && (
-            <motion.div
-              key="construction"
-              custom={isSkipped}
-              variants={constructionVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <img
-                src="/assets/hero/construction-building-left.webp"
-                alt="Construction building structure — Moonlite Builders"
-                width={820}
-                height={680}
-                fetchPriority="high"
-                decoding="async"
-                className="w-full h-auto object-contain object-bottom"
-                style={{ filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.40))' }}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-
-      {/* ── LAYER 10 — Solar SVG right (absolute, no layout impact) ── */}
-      <motion.div
-        style={{ y: assetsY }}
-        className="absolute bottom-0 right-0 z-[10] will-change-transform pointer-events-none select-none
-                   w-[70%] sm:w-[55%] md:w-[50%] lg:w-[45%] xl:w-[42%]"
-        aria-hidden="true"
-      >
-        <AnimatePresence>
-          {assetsActive && (
-            <motion.div
-              key="solar"
-              custom={isSkipped}
-              variants={solarVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <img
-                src="/assets/hero/solar-right.webp"
-                alt="Rooftop solar panel array — Moonlite Builders Solar Solutions"
-                width={760}
-                height={620}
-                fetchPriority="high"
-                decoding="async"
-                className="w-full h-auto object-contain object-bottom"
-                style={{ filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.35))' }}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-
-      {/* ── LAYER 15 — Cloud overlays (absolute) ── */}
-      <AnimatePresence>
-        {assetsActive && (
-          <>
-            <motion.div
-              key="cloud-left"
-              aria-hidden="true"
-              custom={isSkipped}
-              variants={cloudLeftVariants}
-              initial="hidden"
-              animate="visible"
-              className="absolute top-[6%] left-0 z-[15] w-[45%] md:w-[36%] pointer-events-none select-none"
-            >
-              <motion.img
-                src="/assets/hero/clouds-left.webp"
-                alt=""
-                width={640}
-                height={320}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto opacity-60 mix-blend-screen"
-                animate={prefersReduced ? {} : { x: [0, 12, 0], y: [0, -5, 0] }}
-                transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="cloud-right"
-              aria-hidden="true"
-              custom={isSkipped}
-              variants={cloudRightVariants}
-              initial="hidden"
-              animate="visible"
-              className="absolute top-[4%] right-0 z-[15] w-[42%] md:w-[34%] pointer-events-none select-none"
-            >
-              <motion.img
-                src="/assets/hero/clouds-right.webp"
-                alt=""
-                width={640}
-                height={320}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto opacity-55 mix-blend-screen"
-                animate={prefersReduced ? {} : { x: [0, -14, 0], y: [0, -7, 0] }}
-                transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-              />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      {/* ── LAYER 30 — All foreground content (normal flow, full-width) ── */}
-      {/* Navbar spacer — keeps text below the fixed nav bar */}
-      <div className="h-20 md:h-24 shrink-0" aria-hidden="true" />
-
-      {/* Central text column — full viewport width, completely independent of decorative assets */}
+      {/* ── LAYER 30 — All foreground content ── */}
       <motion.div
         style={{ y: contentY }}
         className="relative z-[30] flex-1 flex flex-col items-center justify-center
-                   w-full min-w-0 px-5 md:px-10 py-12 md:py-20 lg:py-24 will-change-transform"
+                   w-full min-w-0 px-5 md:px-10 py-6 md:py-10 will-change-transform"
       >
         {/* Establishment label chip */}
         <motion.div
@@ -432,7 +243,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
           </span>
         </motion.div>
 
-        {/* Primary headline — solid white, single line on desktop */}
+        {/* Primary headline */}
         <motion.h1
           custom={isSkipped}
           variants={headlineVariants}
@@ -449,7 +260,7 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
           We Build It. We Power It.
         </motion.h1>
 
-        {/* Supporting description — wide horizontal paragraph */}
+        {/* Supporting description */}
         <motion.p
           custom={isSkipped}
           variants={descriptionVariants}
@@ -516,10 +327,9 @@ export const Hero: React.FC<HeroProps> = ({ phase, isSkipped }) => {
         </div>
       </motion.div>
 
-      {/* ── Metric Cards — pinned to bottom inside normal flow ── */}
+      {/* ── Feature Cards — aligned using standard mt-8 md:mt-12 ── */}
       <div
-        className="relative z-[30] w-full max-w-6xl mx-auto px-5 md:px-8
-                   pb-6 md:pb-8 shrink-0"
+        className="relative z-[30] w-full max-w-6xl mx-auto px-5 md:px-8 mt-8 md:mt-12"
         role="list"
         aria-label="Key achievements and credentials"
       >
