@@ -78,6 +78,20 @@ export const SolarHero: React.FC = () => {
             </Link>
             <a 
               href="#services"
+              onClick={(e) => {
+                e.preventDefault()
+                const target = document.getElementById('services')
+                if (target) {
+                  const navOffset = 80
+                  const elementPosition = target.getBoundingClientRect().top
+                  const offsetPosition = elementPosition + window.pageYOffset - navOffset
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  })
+                }
+              }}
               className="w-full sm:w-auto h-[52px] sm:h-auto sm:px-8 sm:py-3.5 flex items-center justify-center bg-transparent hover:bg-white/10 text-white font-bold rounded-md text-sm md:text-base tracking-wide border-2 border-[var(--color-gold-500)] shadow-lg transition-transform hover:-translate-y-1 text-center touch-manipulation"
             >
               EXPLORE SERVICES

@@ -6,7 +6,7 @@ import { PackageCard } from './PackageCard'
 
 export const PackageCards: React.FC = () => {
   return (
-    <section id="packages" className="w-full bg-[#fcfcfc] py-16">
+    <section id="packages" className="w-full bg-[#fcfcfc] py-16 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         
         {/* Section Header */}
