@@ -43,7 +43,7 @@ const InstagramIcon: React.FC<{ size?: number; strokeWidth?: number; className?:
 
 const SERVICES = [
   { label: 'Construction', href: '/services/construction' },
-  { label: 'Solar', href: '/#services' },
+  { label: 'Solar', href: '/services/solar' },
   { label: 'Renovation', href: '/#services' },
   { label: 'AMC', href: '/#services' },
 ] as const

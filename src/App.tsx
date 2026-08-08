@@ -11,7 +11,7 @@
  */
 
 import { useState, useEffect, useRef } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { WhatsAppFAB } from './components/WhatsAppFAB'
@@ -40,13 +40,15 @@ const ScrollToHash = () => {
     }
 
     // Scroll to hash element if it exists
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       const id = hash.replace('#', '')
       const element = document.getElementById(id)
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
-    }, 0)
+    }, 100)
+
+    return () => clearTimeout(timer)
   }, [pathname, hash])
 
   return null
@@ -99,6 +101,16 @@ function App() {
             <Route path="/" element={<Home phase={phase} isSkipped={isSkipped} />} />
             <Route path="/services/construction" element={<Construction />} />
             <Route path="/services/solar" element={<Solar />} />
+            {/* Redirect section page paths to homepage section anchors to prevent blank pages */}
+            <Route path="/about" element={<Navigate to="/#about" replace />} />
+            <Route path="/services" element={<Navigate to="/#services" replace />} />
+            <Route path="/why-us" element={<Navigate to="/#why-choose-us" replace />} />
+            <Route path="/why-choose-us" element={<Navigate to="/#why-choose-us" replace />} />
+            <Route path="/gallery" element={<Navigate to="/#gallery" replace />} />
+            <Route path="/projects" element={<Navigate to="/#gallery" replace />} />
+            <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+            {/* Fallback route for any unknown URL */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
