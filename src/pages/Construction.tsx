@@ -11,27 +11,32 @@ export const Construction: React.FC = () => {
     window.scrollTo(0, 0)
     
     // Set Document Title
-    document.title = "Construction Services | Moonlite Builders"
+    document.title = "Moonlite Builders | Residential & Commercial Construction Services"
     
     // Set Meta Description
-    const metaDescription = document.querySelector('meta[name="description"]')
+    let metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Premium residential, commercial and industrial construction services by Moonlite Builders. Transparent pricing, quality materials and expert supervision.')
     } else {
-      const meta = document.createElement('meta')
-      meta.name = 'description'
-      meta.content = 'Premium residential, commercial and industrial construction services by Moonlite Builders. Transparent pricing, quality materials and expert supervision.'
-      document.head.appendChild(meta)
+      metaDescription = document.createElement('meta')
+      metaDescription.setAttribute('name', 'description')
+      metaDescription.setAttribute('content', 'Premium residential, commercial and industrial construction services by Moonlite Builders. Transparent pricing, quality materials and expert supervision.')
+      document.head.appendChild(metaDescription)
     }
 
     // Set Canonical URL
-    const canonical = document.querySelector('link[rel="canonical"]')
+    let canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) {
       canonical.setAttribute('href', 'https://moonlitebuilders.com/services/construction')
+    } else {
+      canonical = document.createElement('link')
+      canonical.setAttribute('rel', 'canonical')
+      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/construction')
+      document.head.appendChild(canonical)
     }
 
     return () => {
-      document.title = "Moonlite Builders & Promoters"
+      document.title = "Moonlite Builders & Promoters | Premium Construction & Rooftop Solar — Tamil Nadu"
       if (canonical) {
         canonical.setAttribute('href', 'https://moonlitebuilders.com/')
       }

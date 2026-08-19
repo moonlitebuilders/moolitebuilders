@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Hero } from '../components/Hero'
 import { About } from '../components/About'
 import { Process } from '../components/Process'
@@ -13,6 +13,17 @@ export interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ phase, isSkipped }) => {
+  useEffect(() => {
+    document.title = "Moonlite Builders & Promoters | Premium Construction & Rooftop Solar — Tamil Nadu"
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Moonlite Builders & Promoters delivers certified residential and commercial construction alongside MNRE-approved rooftop solar installations across Tamil Nadu since 2016. Free site assessment. Government subsidy assistance.')
+    }
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) {
+      canonical.setAttribute('href', 'https://moonlitebuilders.com/')
+    }
+  }, [])
   return (
     <>
       {/* Hero Section — first visual section, full viewport height */}
