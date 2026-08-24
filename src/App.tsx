@@ -18,6 +18,7 @@ import { WhatsAppFAB } from './components/WhatsAppFAB'
 import { Home } from './pages/Home'
 import { Construction } from './pages/Construction'
 import { Solar } from './pages/Solar'
+import { NotFound } from './pages/NotFound'
 
 /* ─── Intro Phase Constants ───────────────────────────────── */
 const PHASE_TIMINGS = [
@@ -101,6 +102,9 @@ function App() {
             <Route path="/" element={<Home phase={phase} isSkipped={isSkipped} />} />
             <Route path="/services/construction" element={<Construction />} />
             <Route path="/services/solar" element={<Solar />} />
+            {/* Alias routes for direct service URLs */}
+            <Route path="/construction" element={<Construction />} />
+            <Route path="/solar" element={<Solar />} />
             {/* Redirect section page paths to homepage section anchors to prevent blank pages */}
             <Route path="/about" element={<Navigate to="/#about" replace />} />
             <Route path="/services" element={<Navigate to="/#services" replace />} />
@@ -109,8 +113,8 @@ function App() {
             <Route path="/gallery" element={<Navigate to="/#gallery" replace />} />
             <Route path="/projects" element={<Navigate to="/#gallery" replace />} />
             <Route path="/contact" element={<Navigate to="/#contact" replace />} />
-            {/* Fallback route for any unknown URL */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* 404 Fallback route for unknown URLs */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 

@@ -25,13 +25,16 @@ export const Solar: React.FC = () => {
     }
 
     // Set Canonical URL
+    const canonicalHref = window.location.pathname.startsWith('/solar') 
+      ? 'https://moonlitebuilders.com/solar' 
+      : 'https://moonlitebuilders.com/services/solar'
     let canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) {
-      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/solar')
+      canonical.setAttribute('href', canonicalHref)
     } else {
       canonical = document.createElement('link')
       canonical.setAttribute('rel', 'canonical')
-      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/solar')
+      canonical.setAttribute('href', canonicalHref)
       document.head.appendChild(canonical)
     }
 

@@ -25,13 +25,16 @@ export const Construction: React.FC = () => {
     }
 
     // Set Canonical URL
+    const canonicalHref = window.location.pathname.startsWith('/construction') 
+      ? 'https://moonlitebuilders.com/construction' 
+      : 'https://moonlitebuilders.com/services/construction'
     let canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) {
-      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/construction')
+      canonical.setAttribute('href', canonicalHref)
     } else {
       canonical = document.createElement('link')
       canonical.setAttribute('rel', 'canonical')
-      canonical.setAttribute('href', 'https://moonlitebuilders.com/services/construction')
+      canonical.setAttribute('href', canonicalHref)
       document.head.appendChild(canonical)
     }
 
